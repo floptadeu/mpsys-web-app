@@ -116,7 +116,7 @@
       const valorVenda = document.getElementById("valorVenda").value;
 
       $.ajax({
-        url: 'http://localhost:4567/item',
+        url: `${window.location.protocol}//${window.location.host}/item/`,
         method: 'POST',
         data: {
           descricao,   

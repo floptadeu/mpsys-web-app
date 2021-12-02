@@ -177,7 +177,7 @@
           const cnpjFornecedor = document.getElementById("cnpj_fornecedor").value;
     
           $.ajax({
-            url: 'http://localhost:4567/item',
+            url: `${window.location.protocol}//${window.location.host}/item/`,
             method: 'GET',
             dataType: "json",
           }).done((data) => {

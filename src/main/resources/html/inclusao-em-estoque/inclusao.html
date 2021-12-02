@@ -185,7 +185,7 @@
 
 
       $.ajax({
-        url: "http://localhost:5500/mp-app/src/main/resources/html/inclusao-em-estoque/inclusao.html/get/:id_lote",
+        url: `${window.location.protocol}//${window.location.host}/mp-app/src/main/resources/html/inclusao-em-estoque/inclusao.html/get/:id_lote/`,
       
         type: "GET",
         dataType: "json",
