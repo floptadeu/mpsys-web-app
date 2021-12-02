@@ -23,6 +23,11 @@ public class Main {
     private static UsuarioService usuarioService = new UsuarioService();
 
     public static void main(String[] args) {
+
+        // String systemPort = System.getenv("PORT");
+        // 	int port = systemPort != null ? Integer.parseInt(systemPort) : 4568;
+        port(getHerokuAssignedPort());
+
         staticFiles.location("/");
 
         get("/hello", (req, res) -> "Hello World");
@@ -73,6 +78,7 @@ public class Main {
         get("/usuario/update/:id", (request, response) -> usuarioService.update(request, response));
         get("/usuario/delete/:id", (request, response) -> usuarioService.delete(request, response));
     }
+
     static int getHerokuAssignedPort() {
         ProcessBuilder processBuilder = new ProcessBuilder();
         if (processBuilder.environment().get("PORT") != null) {
