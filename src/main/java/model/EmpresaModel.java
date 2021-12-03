@@ -1,7 +1,7 @@
 package model;
 
 public class EmpresaModel {
-    private int cnpj;
+    private String cnpj;
     private String nome;
     private String usuario_email;
     /**
@@ -9,7 +9,7 @@ public class EmpresaModel {
      * @param nome
      * @param usuario_email
      */
-    public EmpresaModel(int cnpj, String nome, String usuario_email) {
+    public EmpresaModel(String cnpj, String nome, String usuario_email) {
         super();
         this.cnpj = cnpj;
         this.nome = nome;
@@ -22,13 +22,13 @@ public class EmpresaModel {
     /**
      * @return the cnpj
      */
-    public int getCnpj() {
+    public String getCnpj() {
         return cnpj;
     }
     /**
      * @param cnpj the cnpj to set
      */
-    public void setCnpj(int cnpj) {
+    public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
     }
     /**

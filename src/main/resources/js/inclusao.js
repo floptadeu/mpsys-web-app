@@ -156,24 +156,61 @@ function addEstoque(){
   const valorVenda = document.getElementById("valor_venda").value;
   const cnpjFornecedor = document.getElementById("fornecedor_cnpj").value;
 
-//   $.ajax({
-//     url: '',
-//     method: 'POST',
-//     //type: "GET",
-//     //dataType: "json",
-//     data: {
-//       descricao,   // descricaoBla: descricao
-//       dataValidade,  //
-//       dataAquisicao,
-//       categoria,
-//       quantidade,
-//       valorCompra,
-//       valorVenda,
-//       cnpjFornecedor,
-//     }
-//   }).done((data) => {
-//     console.log(data)
-//   });
+  $.ajax({
+    url: 'http://127.0.0.1:4567/item/add',
+    method: 'POST',
+    dataType: "json",
+    headers: {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer " + getCookie("access_token")
+		},
+    data: {
+       descricao,   // descricaoBla: descricao
+       dataValidade,  //
+       dataAquisicao,
+       categoria,
+       quantidade,
+       valorCompra,
+       valorVenda,
+       cnpjFornecedor,
+    }
+    }).done((data) => {
+     console.log(data)
+   });
 
-//   console.log(descricao);
+   console.log(descricao);
+}
+function getTableCategoria(){
+
+  $.ajax({
+      url: 'http://127.0.0.1:4567/categoria/get/1',
+     method: 'GET',
+  }).done((data) =>{
+    console.log(data)
+    var perecivel = data.perecivel;
+    if(perecivel == false){
+      perecivel = "Não";
+    }
+    else{
+      perecivel = "Sim";
+    }
+
+    var nome = data.nome;
+    console.log(perecivel)
+    let tabela = document.getElementById('corpoTabela');
+    let strHtml = '';
+    strHtml +=
+    ` 
+    <tr>
+      <td scope="row">${perecivel}</td>
+      <td>${nome}</td>
+    </tr>
+    `
+    tabela.innerHTML = strHtml;
+    
+  });
+    
+
+  
+
 }

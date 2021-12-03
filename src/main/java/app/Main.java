@@ -4,6 +4,7 @@ import static spark.Spark.*;
 
 import java.util.*;
 import spark.ModelAndView;
+import spark.Spark;
 import service.CategoriaService;
 import service.EmpresaService;
 import service.EstoqueService;
@@ -11,7 +12,7 @@ import service.FornecedorService;
 import service.ItemService;
 import service.LoteService;
 import service.UsuarioService;
-
+import util.FiltroCors;
 public class Main {
 
     private static CategoriaService categoriaService = new CategoriaService();           
@@ -21,57 +22,59 @@ public class Main {
     private static ItemService itemService = new ItemService();
     private static LoteService loteService = new LoteService();
     private static UsuarioService usuarioService = new UsuarioService();
-
+    private static FiltroCors filtroCors = new FiltroCors();
     public static void main(String[] args) {
 
         // String systemPort = System.getenv("PORT");
         // 	int port = systemPort != null ? Integer.parseInt(systemPort) : 4568;
         port(getHerokuAssignedPort());
 
-        staticFiles.location("/");
-
+        staticFiles.location("/public");
+        
+       
         get("/hello", (req, res) -> "Hello World");
-
+       
 
         //precisamos mudar o caminho de referencia o que esta entre aspas ""
         //por exemplo: "/produto/deletar_produto"
 
+        filtroCors.apply();
         //metodos para Categoria
         post("/categoria/add", (request, response) -> categoriaService.add(request, response));
         get("/categoria/get/:id", (request, response) -> categoriaService.get(request, response));
         get("/categoria/update/:id", (request, response) -> categoriaService.update(request, response));
         get("/categoria/delete/:id", (request, response) -> categoriaService.delete(request, response));
-
+        filtroCors.apply();
         //metodo para Empresa
         post("/empresa/add", (request, response) -> empresaService.add(request, response));
         get("/empresa/get/:id", (request, response) -> empresaService.get(request, response));
         get("/empresa/update/:id", (request, response) -> empresaService.update(request, response));
         get("/empresa/delete/:id", (request, response) -> empresaService.delete(request, response));
-
+        filtroCors.apply();
         //metodos para Estoque
         post("/estoque/add", (request, response) -> estoqueService.add(request, response));
         get("/estoque/get/:id", (request, response) -> estoqueService.get(request, response));
         get("/estoque/update/:id", (request, response) -> estoqueService.update(request, response));
         get("/estoque/delete/:id", (request, response) -> estoqueService.delete(request, response));
-
+        filtroCors.apply();
         //metodos para Fornecedor
         post("/fornecedor/add", (request, response) -> fornecedorService.add(request, response));
         get("/fornecedor/get/:id", (request, response) -> fornecedorService.get(request, response));
         get("/fornecedor/update/:id", (request, response) -> fornecedorService.update(request, response));
         get("/fornecedor/delete/:id", (request, response) -> fornecedorService.delete(request, response));
-        
+        filtroCors.apply();
         //metodos para Item
         post("/item/add", (request, response) -> itemService.add(request, response));
         get("/item/get/:id", (request, response) -> itemService.get(request, response));
         get("/item/update/:id", (request, response) -> itemService.update(request, response));
         get("/item/delete/:id", (request, response) -> itemService.delete(request, response));
-
+        filtroCors.apply();
         //metodos para Lote
         post("/lote/add", (request, response) -> loteService.add(request, response));
         get("/lote/get/:id", (request, response) -> loteService.get(request, response));
         get("/lote/update/:id", (request, response) -> loteService.update(request, response));
         get("/lote/delete/:id", (request, response) -> loteService.delete(request, response));
-
+        filtroCors.apply();
         //metodos para Usuario
         post("/usuario/add", (request, response) -> usuarioService.add(request, response));
         get("/usuario/get/:id", (request, response) -> usuarioService.get(request, response));

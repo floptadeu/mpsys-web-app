@@ -50,7 +50,7 @@ public class ItemDAO {
             st.setDouble(3, itemModel.getValorVenda());
             st.setInt(4, itemModel.getQuantidade());
             st.setInt(5, itemModel.getLote_idLote());
-            st.setInt(6, itemModel.getFornecedor_cnpj());
+            st.setString(6, itemModel.getFornecedor_cnpj());
             st.setDouble(7, itemModel.getValorCompra());
 
             st.executeUpdate();
@@ -74,7 +74,7 @@ public class ItemDAO {
             if(rs.next()){
                 itemModel = new ItemModel(idItem,((Date) rs.getObject("data_de_aquisicao")).toLocalDate(),
                             ((Date) rs.getObject("data_de_validade")).toLocalDate(),rs.getDouble("valor_venda"), 
-                            rs.getInt("quantidade"), rs.getInt("lote_id_lote"), rs.getInt("fornecedor_cnpj"),
+                            rs.getInt("quantidade"), rs.getInt("lote_id_lote"), rs.getString("fornecedor_cnpj"),
                              rs.getDouble("valor_compra"));
             }
             st.close();
@@ -100,7 +100,7 @@ public class ItemDAO {
             st.setDouble(3, itemModel.getValorVenda());
             st.setInt(4, itemModel.getQuantidade());
             st.setInt(5, itemModel.getLote_idLote());
-            st.setInt(6, itemModel.getFornecedor_cnpj());
+            st.setString(6, itemModel.getFornecedor_cnpj());
             st.setDouble(7, itemModel.getValorCompra());
             
             st.executeUpdate();
@@ -149,7 +149,7 @@ public class ItemDAO {
 
         try {
             Statement st = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-            ResultSet rs = st.executeQuery("SELECT * FROM item ORDER BY id_item");        
+            ResultSet rs = st.executeQuery("SELECT * FROM  public.item ORDER BY id_item");        
              if(rs.next()){
                  rs.last();
                  itens = new ItemModel[rs.getRow()];
@@ -158,7 +158,7 @@ public class ItemDAO {
                  for(int i = 0; rs.next(); i++) {
                     itens[i] = new ItemModel(rs.getInt("id_item"),((Date) rs.getObject("data_de_aquisicao")).toLocalDate(),
                             ((Date) rs.getObject("data_de_validade")).toLocalDate(),rs.getDouble("valor_venda"), 
-                            rs.getInt("quantidade"), rs.getInt("lote_id_lote"), rs.getInt("fornecedor_cnpj"),
+                            rs.getInt("quantidade"), rs.getInt("lote_id_lote"), rs.getString("fornecedor_cnpj"),
                              rs.getDouble("valor_compra"));
                  }
              } 

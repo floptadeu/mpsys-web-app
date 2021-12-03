@@ -34,7 +34,7 @@ public class LoteService {
     }
 
     public Object get (Request request, Response response) {
-        int idLote = Integer.valueOf(request.params(":id_lote"));
+        int idLote = Integer.valueOf(request.params(":id"));
         LoteModel loteModel = (LoteModel) loteDAO.getIdLote(idLote);
 
         if (loteModel != null) {
@@ -58,7 +58,7 @@ public class LoteService {
     }
 
     public Object update (Request request, Response response) {
-        int idLote = Integer.valueOf(request.params(":id_lote"));
+        int idLote = Integer.valueOf(request.params(":id"));
 		LoteModel loteModel = (LoteModel) loteDAO.getIdLote(idLote);
 
         if (loteModel != null) {
@@ -79,7 +79,7 @@ public class LoteService {
 	}
 
     public Object delete (Request request, Response response) {
-        int idLote = Integer.parseInt(request.params(":id_lote"));
+        int idLote = Integer.parseInt(request.params(":id"));
         LoteModel lote = (LoteModel) loteDAO.getIdLote(idLote);
 
         if (lote != null) {

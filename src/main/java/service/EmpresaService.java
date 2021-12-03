@@ -17,7 +17,7 @@ public class EmpresaService {
     }
 
     public Object add(Request request, Response response) {
-        int cnpj = Integer.valueOf(request.queryParams("cnpj"));
+        String cnpj = request.queryParams("cnpj");
         String nome = request.queryParams("nome");
         String usuario_email = request.queryParams("usuario_email");
 
@@ -32,7 +32,7 @@ public class EmpresaService {
     }
 
     public Object get(Request request, Response response) {
-        int cnpj = Integer.valueOf(request.params(":cnpj"));
+        String cnpj = (request.params(":id"));
 
         EmpresaModel empresa = (EmpresaModel) empresaDAO.getEmpresa(cnpj);
 
@@ -55,7 +55,7 @@ public class EmpresaService {
     }
 
     public Object update(Request request, Response response) {
-        int cnpj = Integer.valueOf(request.params(":cnpj"));
+        String cnpj = request.params(":id");
 		EmpresaModel empresa = (EmpresaModel) empresaDAO.getEmpresa(cnpj);
 
         if (empresa != null) {
@@ -74,7 +74,7 @@ public class EmpresaService {
 	}
 
     public Object delete(Request request, Response response) {
-        int cnpj = Integer.parseInt(request.params(":cnpj"));
+        String cnpj = (request.params(":id"));
 
         EmpresaModel empresa = (EmpresaModel) empresaDAO.getEmpresa(cnpj);
 

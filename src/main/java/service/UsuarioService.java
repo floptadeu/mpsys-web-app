@@ -18,9 +18,9 @@ public class UsuarioService {
 
     public Object add(Request request, Response response) {
         String email = request.queryParams("email");
-        String nome = request.queryParams("nome");
         String senha = request.queryParams("senha");
-        UsuarioModel usuarioModel = new UsuarioModel(email,nome,senha);
+        String nome = request.queryParams("nome");
+        UsuarioModel usuarioModel = new UsuarioModel(email,senha,nome);
 
         if (usuarioDAO.createUsuario(usuarioModel)) {
             response.status(201);
@@ -31,7 +31,7 @@ public class UsuarioService {
     }
 
     public Object get(Request request, Response response) {
-        String email = (request.params(":email"));
+        String email = (request.params(":id"));
 
         UsuarioModel usuarioModel = (UsuarioModel) usuarioDAO.getUsuario(email);
 
@@ -52,7 +52,7 @@ public class UsuarioService {
     }
 
     public Object update(Request request, Response response) {
-        String email = (request.params(":email"));
+        String email = (request.params(":id"));
 		UsuarioModel usuarioModel = (UsuarioModel) usuarioDAO.getUsuario(email);
 
         if (usuarioModel != null) {
@@ -71,7 +71,7 @@ public class UsuarioService {
 	}
 
     public Object delete(Request request, Response response) {
-        String email = (request.params(":email"));
+        String email = (request.params(":id"));
 
         UsuarioModel usuarioModel = (UsuarioModel) usuarioDAO.getUsuario(email);
 

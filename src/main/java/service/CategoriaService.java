@@ -31,7 +31,7 @@ public class CategoriaService {
     }
 
     public Object get (Request request, Response response) {
-        int id_categoria = Integer.valueOf(request.params(":id_categoria"));
+        int id_categoria = Integer.valueOf(request.params(":id"));
         CategoriaModel categoriaModel = (CategoriaModel) categoriaDAO.getCategoria(id_categoria);
 
         if (categoriaModel != null) {
@@ -53,7 +53,7 @@ public class CategoriaService {
     }
 
     public Object update (Request request, Response response) {
-        int id_categoria = Integer.valueOf(request.params(":id_categoria"));
+        int id_categoria = Integer.valueOf(request.params(":id"));
 		CategoriaModel categoriaModel = (CategoriaModel) categoriaDAO.getCategoria(id_categoria);
 
         if (categoriaModel != null) {
@@ -73,7 +73,7 @@ public class CategoriaService {
 	}
 
     public Object delete (Request request, Response response) {
-        int id_categoria = Integer.parseInt(request.params(":id_categoria"));
+        int id_categoria = Integer.parseInt(request.params(":id"));
         CategoriaModel categoriaModel = (CategoriaModel) categoriaDAO.getCategoria(id_categoria);
 
         if (categoriaModel != null) {

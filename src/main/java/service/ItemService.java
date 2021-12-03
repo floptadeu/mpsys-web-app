@@ -34,7 +34,7 @@ public class ItemService {
         double valorVenda = Double.valueOf(request.queryParams("valor_venda"));
         int quantidade = Integer.valueOf(request.queryParams("quantidade"));
         int lote_idLote = Integer.valueOf(request.queryParams("lote_id_lote"));
-        int fornecedor_cnpj = Integer.valueOf(request.queryParams("fornecedor_cnpj"));
+        String fornecedor_cnpj = (request.queryParams("fornecedor_cnpj"));
         double valorCompra = Double.valueOf(request.queryParams("valor_compra"));
       
         int idItem = itemDAO.getMaxId();
@@ -49,7 +49,7 @@ public class ItemService {
     }
 
     public Object get(Request request, Response response) {
-        int idItem = Integer.valueOf(request.params(":id_item"));
+        int idItem = Integer.valueOf(request.params(":id"));
 
         ItemModel itemModel = (ItemModel) itemDAO.getItem(idItem);
 
@@ -77,7 +77,7 @@ public class ItemService {
     }
 
     public Object update(Request request, Response response) {
-        int idItem = Integer.valueOf(request.params(":id_item"));
+        int idItem = Integer.valueOf(request.params(":id"));
 		ItemModel itemModel = (ItemModel) itemDAO.getItem(idItem);
 
         if (itemModel != null) {
@@ -94,8 +94,8 @@ public class ItemService {
             itemModel.setValorCompra(request.queryParams("valor_compra").equals("") ? itemModel.getValorCompra() : Double.valueOf(request.queryParams("valor_compra")));
             itemModel.setValorVenda(request.queryParams("valor_venda").equals("") ? itemModel.getValorVenda() : Double.valueOf(request.queryParams("valor_venda")));
             itemModel.setQuantidade(request.queryParams("quantidade").equals("") ? itemModel.getQuantidade() : Integer.valueOf(request.queryParams("quantidade")));
-            itemModel.setLote_idLote(request.queryParams("lote_id_lote").equals("") ? itemModel.getQuantidade() : Integer.valueOf(request.queryParams("lote_id_lote")));
-            itemModel.setFornecedor_cnpj(request.queryParams("fornecedor_cnpj").equals("") ? itemModel.getQuantidade() : Integer.valueOf(request.queryParams("fornecedor_cnpj")));
+            itemModel.setLote_idLote(request.queryParams("lote_id_lote").equals("") ? itemModel.getLote_idLote() : Integer.valueOf(request.queryParams("lote_id_lote")));
+            itemModel.setFornecedor_cnpj(request.queryParams("fornecedor_cnpj").equals("") ? itemModel.getFornecedor_cnpj() : (request.queryParams("fornecedor_cnpj")));
         	
             itemDAO.updateItem(itemModel);
         	
@@ -108,7 +108,7 @@ public class ItemService {
 	}
 
     public Object delete(Request request, Response response) {
-        int idItem = Integer.valueOf(request.params(":id_item"));
+        int idItem = Integer.valueOf(request.params(":id"));
         ItemModel itemModel = (ItemModel) itemDAO.getItem(idItem);
 
         if (itemModel != null) {

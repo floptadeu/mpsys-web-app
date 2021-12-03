@@ -31,7 +31,7 @@ public class FornecedorService {
     }
 
     public Object get(Request request, Response response) {
-        int cnpj = Integer.valueOf((request.params(":cnpj")));
+        int cnpj = Integer.valueOf((request.params(":id")));
 
         FornecedorModel fornecedorModel = (FornecedorModel) fornecedorDAO.getFornecedor(cnpj);
 
@@ -51,7 +51,7 @@ public class FornecedorService {
     }
 
     public Object update(Request request, Response response) {
-        int cnpj = Integer.valueOf(request.params(":cnpj"));
+        int cnpj = Integer.valueOf(request.params(":id"));
 		FornecedorModel fornecedorModel = (FornecedorModel) fornecedorDAO.getFornecedor(cnpj);
 
         if (fornecedorModel != null) {
@@ -69,7 +69,7 @@ public class FornecedorService {
 	}
 
     public Object delete(Request request, Response response) {
-        int cnpj = Integer.valueOf(request.params(":cnpj"));
+        int cnpj = Integer.valueOf(request.params(":id"));
 
         FornecedorModel fornecedorModel = (FornecedorModel) fornecedorDAO.getFornecedor(cnpj);
 

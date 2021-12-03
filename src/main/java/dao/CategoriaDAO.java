@@ -63,7 +63,7 @@ public class CategoriaDAO {
         connect();
         CategoriaModel categoriaModel = null;
         try{
-            String query = "SELECT * FROM public.mpsys WHERE id_categoria = ?;";
+            String query = "SELECT * FROM public.categoria WHERE id_categoria = ?;";
             PreparedStatement st = conn.prepareStatement(query);
             st.setInt(1,id_categoria);
             

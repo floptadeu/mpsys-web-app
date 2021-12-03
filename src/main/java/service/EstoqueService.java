@@ -21,7 +21,7 @@ public class EstoqueService {
     public Object add(Request request, Response response) {
         int id_estoque = Integer.valueOf(request.queryParams("id_estoque"));
         double credito = Double.valueOf(request.queryParams("credito"));
-        int empresa_cnpj = Integer.valueOf(request.queryParams("empresa_cnpj"));
+        String empresa_cnpj = (request.queryParams("empresa_cnpj"));
 
         EstoqueModel estoque = new EstoqueModel(id_estoque, credito, empresa_cnpj);
 
@@ -34,7 +34,7 @@ public class EstoqueService {
     }
 
     public Object get(Request request, Response response) {
-        int id_estoque = Integer.valueOf(request.params(":id_estoque"));
+        int id_estoque = Integer.valueOf(request.params(":id"));
 
         EstoqueModel estoque = (EstoqueModel) estoqueDAO.getEstoque(id_estoque);
 
@@ -57,14 +57,14 @@ public class EstoqueService {
     }
 
     public Object update(Request request, Response response) {
-        int id_estoque = Integer.valueOf(request.params(":id_estoque"));
+        int id_estoque = Integer.valueOf(request.params(":id"));
 		EstoqueModel estoque = (EstoqueModel) estoqueDAO.getEstoque(id_estoque);
 
         if (estoque != null) {
         
 
             estoque.setCredito(request.queryParams("credito").equals("") ? estoque.getCredito() : Double.valueOf(request.queryParams("credito")));
-            estoque.setEmpresa_cnpj(request.queryParams("empresa_cnpj").equals("") ? estoque.getEmpresa_cnpj() : Integer.valueOf(request.queryParams("id_estoque")));
+            estoque.setEmpresa_cnpj(request.queryParams("empresa_cnpj").equals("") ? estoque.getEmpresa_cnpj() : request.queryParams("empresa_cnpj"));
             estoqueDAO.updateEstoque(estoque);
         	
             return id_estoque;
@@ -76,7 +76,7 @@ public class EstoqueService {
 	}
 
     public Object delete(Request request, Response response) {
-        int id_estoque = Integer.parseInt(request.params(":id_estoque"));
+        int id_estoque = Integer.parseInt(request.params(":id"));
 
         EstoqueModel estoque = (EstoqueModel) estoqueDAO.getEstoque(id_estoque);
 

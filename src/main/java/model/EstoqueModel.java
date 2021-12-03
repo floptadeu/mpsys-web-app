@@ -3,13 +3,13 @@ package model;
 public class EstoqueModel {
     private int id_estoque;
     private double credito;
-    private int empresa_cnpj;
+    private String empresa_cnpj;
     /**
      * @param id_estoque
      * @param credito
      * @param empresa_cnpj
      */
-    public EstoqueModel(int id_estoque, double credito, int empresa_cnpj) {
+    public EstoqueModel(int id_estoque, double credito, String empresa_cnpj) {
         super();
         this.id_estoque = id_estoque;
         this.credito = credito;
@@ -46,13 +46,13 @@ public class EstoqueModel {
     /**
      * @return the empresa_cnpj
      */
-    public int getEmpresa_cnpj() {
+    public String getEmpresa_cnpj() {
         return empresa_cnpj;
     }
     /**
      * @param empresa_cnpj the empresa_cnpj to set
      */
-    public void setEmpresa_cnpj(int empresa_cnpj) {
+    public void setEmpresa_cnpj(String empresa_cnpj) {
         this.empresa_cnpj = empresa_cnpj;
     }
     

@@ -8,7 +8,7 @@ public class ItemModel {
 	private double valorVenda;
 	private int quantidade;
 	private int lote_idLote;
-	private int fornecedor_cnpj;
+	private String fornecedor_cnpj;
 	private double valorCompra;
 	/**
 	 * @param idItem
@@ -21,7 +21,7 @@ public class ItemModel {
 	 * @param valorCompra
 	 */
 	public ItemModel(int idItem,LocalDate dataDeAquisicao, LocalDate dataDeValidade, double valorVenda, int quantidade,
-			int lote_idLote, int fornecedor_cnpj, double valorCompra) {
+			int lote_idLote, String fornecedor_cnpj, double valorCompra) {
 		super();
 		this.idItem = idItem;
 		this.dataDeAquisicao = dataDeAquisicao;
@@ -77,7 +77,7 @@ public class ItemModel {
 	/**
 	 * @return the fornecedor_cnpj
 	 */
-	public int getFornecedor_cnpj() {
+	public String getFornecedor_cnpj() {
 		return fornecedor_cnpj;
 	}
 	/**
@@ -126,7 +126,7 @@ public class ItemModel {
 	/**
 	 * @param fornecedor_cnpj the fornecedor_cnpj to set
 	 */
-	public void setFornecedor_cnpj(int fornecedor_cnpj) {
+	public void setFornecedor_cnpj(String fornecedor_cnpj) {
 		this.fornecedor_cnpj = fornecedor_cnpj;
 	}
 	/**

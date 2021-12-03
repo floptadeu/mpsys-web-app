@@ -48,7 +48,7 @@ public class EmpresaDAO {
                 +"(cnpj,nome,usuario_email)"
                 +" VALUES (ARRAY[?], ARRAY[?], ARRAY[?]);";
             PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(1, empresaModel.getCnpj());
+            st.setString(1, empresaModel.getCnpj());
             st.setString(2, empresaModel.getNome());
             st.setString(3, empresaModel.getUsuario_email());
             st.executeUpdate();
@@ -60,13 +60,13 @@ public class EmpresaDAO {
         return status;
     }
 
-    public EmpresaModel getEmpresa(int cnpj){
+    public EmpresaModel getEmpresa(String cnpj){
         connect();
         EmpresaModel empresa = null;
         try{
             String query = "SELECT * FROM public.empresa WHERE cnpj = ARRAY[?];";
             PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(1,cnpj);
+            st.setString(1,cnpj);
             
             ResultSet rs = st.executeQuery();
             if(rs.next()){
@@ -89,7 +89,7 @@ public class EmpresaDAO {
             +" SET nome=ARRAY[?], usuario_email=ARRAY[?]"
             +" WHERE cnpj=ARRAY[?]";
             PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(3, empresa.getCnpj());
+            st.setString(3, empresa.getCnpj());
             st.setString(1, empresa.getNome());
             st.setString(2, empresa.getUsuario_email());
 
@@ -102,13 +102,13 @@ public class EmpresaDAO {
         return status;
     }
 
-    public boolean deleteEmpresa(int cnpj){
+    public boolean deleteEmpresa(String cnpj){
         connect();
         boolean status = false;
 		try {  
 			String query = "DELETE FROM public.empresa WHERE cnpj = ARRAY[?];";
 			PreparedStatement st = conn.prepareStatement(query);
-            st.setInt(1, cnpj);
+            st.setString(1, cnpj);
             st.executeUpdate();
 			st.close();
 			status = true;

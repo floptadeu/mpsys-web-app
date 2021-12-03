@@ -65,6 +65,7 @@
           <option>Alimentos</option>
           <option>Vestuário</option>
           <option>Limpeza</option>
+          <option>Eletrônicos</option>
           <option>...</option>
         </select>
       </div>
@@ -145,15 +146,15 @@
   <script src="../../js/inclusao.js"></script>
 
   <script>
-    function addEstoque(){
-      const descricao = document.getElementById("descricao").value;
-      const dataValidade = document.getElementById("data_de_validade").value;
-      const dataAquisicao = document.getElementById("data_de_aquisicao").value;
-      const categoria = document.getElementById("categoria").value;
-      const quantidade = document.getElementById("quantidade").value;
-      const valorCompra = document.getElementById("valor_compra").value;
-      const valorVenda = document.getElementById("valor_venda").value;
-      const cnpjFornecedor = document.getElementById("fornecedor_cnpj").value;
+    // function addEstoque(){
+      // const descricao = document.getElementById("descricao").value;
+      // const dataValidade = document.getElementById("data_de_validade").value;
+      // const dataAquisicao = document.getElementById("data_de_aquisicao").value;
+      // const categoria = document.getElementById("categoria").value;
+      // const quantidade = document.getElementById("quantidade").value;
+      // const valorCompra = document.getElementById("valor_compra").value;
+      // const valorVenda = document.getElementById("valor_venda").value;
+      // const cnpjFornecedor = document.getElementById("fornecedor_cnpj").value;
 
     //   $.ajax({
     //     url: '',
@@ -175,9 +176,42 @@
     //   });
 
     //   console.log(descricao);
-    }
+    // }
 
+  //   function getTableCategoria(){
 
+  //   $.ajax({
+  //       url: 'http://127.0.0.1:4567/categoria/get/1',
+  //      method: 'GET',
+  //   }).done((data) =>{
+  //     console.log(data)
+  //     var perecivel = data.perecivel;
+  //     if(perecivel == false){
+  //       perecivel = "Não";
+  //     }
+  //     else{
+  //       perecivel = "Sim";
+  //     }
+
+  //     var nome = data.nome;
+  //     console.log(perecivel)
+  //     let tabela = document.getElementById('corpoTabela');
+  //     let strHtml = '';
+  //     strHtml +=
+  //     ` 
+  //     <tr>
+  //       <td scope="row">${perecivel}</td>
+  //       <td>${nome}</td>
+  //     </tr>
+  //     `
+  //     tabela.innerHTML = strHtml;
+      
+  //   });
+      
+
+    
+
+  // }
   </script>
   <script>
     function getLote() {

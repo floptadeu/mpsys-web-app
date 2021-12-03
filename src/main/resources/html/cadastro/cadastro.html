@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="../../css/login.css">
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/style.css">
-    <script src='../../js/fakedb_login.js'></script>
+    <!--<script src='../../js/fakedb_login.js'></script>-->
 </head>
 
 <body>
@@ -52,7 +52,7 @@
                             </div>
                             <div class="col-6 p-3">
                                 <label for="nome" class="lead font-weight-bold">Nome</label>
-                                <input type="text" class="form-control" placeholder="Ex.: Felipe Tadeu" id="nome">
+                                <input type="text" class="form-control" id="nome">
                             </div>
                             <div class="col-6 p-3">
                                 <label for="username" class="lead font-weight-bold">Nome de Usuário</label>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="col-6 p-3">
                                 <label for="nome" class="lead font-weight-bold">Email</label>
-                                <input type="email" class="form-control" placeholder="Ex.: felipe@MPSYS.com.br"
+                                <input type="email" class="form-control" 
                                     id="email">
                             </div>
                             <div class="col-6 p-3">
@@ -76,17 +76,16 @@
                             </div>
                             <div class="col-6 p-3">
                                 <label for="empresa" class="lead font-weight-bold">Empresa</label>
-                                <input type="text" class="form-control" placeholder="Ex.: MPSYS"
-                                    id="empresa">
+                                <input type="text" class="form-control" id="empresa">
                             </div>
                             <div class="col-6 p-3">
                                 <label for="cnpj" class="lead font-weight-bold">CNPJ</label>
-                                <input type="text" class="form-control" placeholder="XX.XXX.XXX/XXXX-XX" id="cnpj">
+                                <input type="text" class="form-control" id="cnpj">
                             </div>
                         </div>
                         <div class="row border-bottom rounded-pill shadow-sm mt-3 mb-2 mx-2 px-5">
                             <div class="col-12 text-center p-3">
-                                <button type="submit" class="btn btn-dark" id="registrar">Registrar</button>
+                                <button  class="btn btn-dark" onclick="CadastraUsuario()" id="registrar" type="submit">Registrar</button>
                             </div>
                         </div>
                     </form>
@@ -254,8 +253,8 @@
                 });
             }
         };
-    </script>
-
+    </script> 
+    <script> src="../../js/cadastro.js"</script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
     </script>

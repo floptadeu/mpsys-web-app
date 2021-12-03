@@ -49,7 +49,7 @@ public class EstoqueDAO {
             PreparedStatement st = conn.prepareStatement(query);
             //st.setInt(1, estoqueModel.getIdEstoque());
             st.setDouble(1, estoqueModel.getCredito());
-            st.setInt(2, estoqueModel.getEmpresa_cnpj());
+            st.setString(2, estoqueModel.getEmpresa_cnpj());
             st.executeUpdate();
             st.close();
             status = true;
@@ -70,7 +70,7 @@ public class EstoqueDAO {
             ResultSet rs = st.executeQuery();
             if(rs.next()){
                 estoque = new EstoqueModel(id_estoque,(rs.getDouble("credito")),
-                            rs.getInt("empresa_cnpj"));
+                            rs.getString("empresa_cnpj"));
             }
             st.close();
         } catch (SQLException u) {
@@ -90,7 +90,7 @@ public class EstoqueDAO {
             PreparedStatement st = conn.prepareStatement(query);
             st.setInt(3, estoque.getIdEstoque());
             st.setDouble(1, estoque.getCredito());
-            st.setInt(2, estoque.getEmpresa_cnpj());
+            st.setString(2, estoque.getEmpresa_cnpj());
 
             st.executeUpdate();
             st.close();
